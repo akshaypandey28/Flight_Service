@@ -1,13 +1,13 @@
-Airline Backend System
+# Airline Backend System
 
-Objective
+## Objective
 We need to build a backend system that can support different features for an airline company.
 Our end user is going to be someone who wants to book flights and query about flights so we
 need a robust system to actually help them give the best experience possible. This doc is solely
 going to focus on the backend part of the system. We want to prepare the whole backend
 keeping the fact in mind that the code base should be as maintainable as possible.
 
-Requirements
+## Requirements
 - A user should be able to search for flights from one place to another.
 - User should be able to mention the source and destination details
 - User should be able to select the date of the journey
@@ -39,7 +39,9 @@ Requirements
 - Coupons for discounts and offers
 - While making a booking a person can reserve more than one seats with one login id
 
-Non functional requirements
+
+
+## Non functional requirements
 - We can expect that we are going to have more flights searches than flight booking
 - The system needs to be accurate in terms of booking
 - Expect that we will be having approx 1,00,000 total users, 5 lakh bookings might come up in one quarter
@@ -48,22 +50,28 @@ Non functional requirements
 - The system should handle real time updates to flight prices, before user makes the final booking
 - Concurrency should be handled, using RDBMS should be the good solution
 
-Capacity Estimation
+
+
+## Capacity Estimation
+```
 - Storage estimates -
     	- For the upcoming 5 years, 80,00,000 bookings, 2,00,000 Users, Considering all the 
 users records and booking records take 10 MB of data, the overall 10 TB of memory 
 should be fine for our initial pilot run.
 - Traffic estimates - If we consider 30:1 as the search:booking ratio, then at max we
 expect 150000 search queries a day. 2 query/s
+```
 
-Search and Flight Service
+
+## Search and Flight Service
+```
 - create flights
 - delete flights
 - update flights
 - search for flights
 	- based on multiple filtration criteria we can search for flights
 	- pagination
-
+```
 
 
 
