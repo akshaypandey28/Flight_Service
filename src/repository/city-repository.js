@@ -42,7 +42,7 @@ class CityRepository{
             // for getting updated data in mysql we use the below approach
             const city = await City.findByPk(cityId);
             city.name = data.name;
-            await city.save();
+            await city.save(); //save() is async call
             return city;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
