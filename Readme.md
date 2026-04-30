@@ -79,4 +79,10 @@ npx sequelize db:migrate
 
 npx sequelize db:migrate:undo
 # undo the most recent migration
+
+npx sequelize seed:generate --name add-airports
+# generates a new seeder file named add-airports in seeders folder
+
+npx sequelize db:seed:all
+# runs all seeder files and inserts data into the database
 ```
