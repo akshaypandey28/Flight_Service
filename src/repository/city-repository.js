@@ -62,20 +62,29 @@ class CityRepository{
         }
     }
 
-    async getAllCities(filter) { // filter can be empty also and filter is query params
+    async getAllCities(filter) {
         try {
-            if(filter.name){
-                const cities = await City.findAll({
-                    where:{
-                        name:{
-                            [Op.startsWith]: filter.name //it will return all the cities whose name starts with filter.name
-                        }
-                    }
-                });
-                return cities;
+            // creating an empty object to store dynamic filter conditions
+            let whereClause = {};
+
+            // if name is present in query params, add name filter
+            if (filter.name) {
+                whereClause.name = {
+                    [Op.startsWith]: filter.name // matches cities whose name starts with given value
+                };
             }
-            
-            const cities = await City.findAll();
+
+            // if id is present in query params, add id filter
+            if (filter.id) {
+                whereClause.id = filter.id; // exact match on id
+            }
+
+            // if whereClause is empty -> returns all records
+            // if not empty -> applies filters
+            const cities = await City.findAll({
+                where: whereClause
+            });
+
             return cities;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
