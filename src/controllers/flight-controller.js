@@ -43,7 +43,30 @@ const get = async(req,res) => {
     }
 }
 
+const getAll = async (req, res) => {
+    try {
+        console.log("DATA OF QUERY PARAMS ------------- ",req.query);
+        const response = await flightService.getAllFlightData(req.query);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            err: {},
+            message: 'Successfully fetched all the flights'
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to fetch all the flights',
+            err: error
+        });
+    }
+}
+
+
 module.exports = {
     create,
-    get
+    get,
+    getAll
 }

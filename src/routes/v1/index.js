@@ -4,11 +4,14 @@ const FlightController = require('../../controllers/flight-controller.js');
 
 const router = express.Router();
 
+//for cities
 router.post('/city',CityController.create);
 router.delete('/city/:id', CityController.destroy);
 router.get('/city/:id', CityController.get);
 router.patch('/city/:id', CityController.update);
 router.get('/city', CityController.getAll);
 
+//for flights
 router.post('/flights',FlightController.create);
+router.get('/flights',FlightController.getAll);
 module.exports = router;
